@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Админка — Школьный помощник</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+</head>
+<body class="admin">
+<header>
+  <h1>🛠 Админка</h1>
+  <div>
+    <button class="theme-toggle" title="Сменить тему">🌙</button>
+    <a href="index.html" class="admin-link">← На сайт</a>
+    <span id="whoami" class="whoami"></span>
+    <button id="logout" hidden>Выйти</button>
+  </div>
+</header>
+
+<section id="login" class="card">
+  <h2>Вход в админку</h2>
+  <input id="user" type="text" placeholder="Логин" autocomplete="username">
+  <input id="pass" type="password" placeholder="Пароль" autocomplete="current-password">
+  <button id="login-btn">Войти</button>
+  <p id="login-status"></p>
+</section>
+
+<main id="admin-main" hidden>
+  <div class="topbar">
+    <button onclick="window.location.href = (window.API_BASE || '') + '/api/admin/export-all'">
+      📥 Скачать всё одним JSON
+    </button>
+  </div>
+
+  <nav>
+    <button data-sec="dz">📚 ЦДЗ</button>
+    <button data-sec="konspekty">📖 Конспекты</button>
+    <button data-sec="otv">✏️ Ответы</button>
+    <button data-sec="olympiads">📝 Олимпиады</button>
+    <button data-sec="vpn">🔐 VPN</button>
+    <button data-sec="subjects">📋 Предметы</button>
+    <button data-sec="stepik">💻 Stepik</button>
+    <button data-sec="yakids">💻 Я.Учебник</button>
+    <button data-sec="consents">📜 Согласия</button>
+    <button data-sec="support">💬 Обращения</button>
+    <button data-sec="admins">👤 Админы</button>
+  </nav>
+
+  <section id="sec"></section>
+</main>
+
+<script src="admin.js"></script>
+</body>
+</html>
