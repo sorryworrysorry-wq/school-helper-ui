@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Школьный помощник</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+</head>
+<body>
+<header>
+  <h1>🎒 Школьный помощник</h1>
+  <div>
+    <button class="theme-toggle" title="Сменить тему">🌙</button>
+    <a href="admin.html" class="admin-link">🛠</a>
+  </div>
+</header>
+
+<nav>
+  <button data-tab="dz" class="active">📚 ЦДЗ</button>
+  <button data-tab="konspekty">📖 Конспекты</button>
+  <button data-tab="otv">✏️ Ответы</button>
+  <button data-tab="olympiads">📝 Олимпиады</button>
+  <button data-tab="tools">🧮 Шпаргалки</button>
+  <button data-tab="vpn">🔐 VPN</button>
+  <button data-tab="stepik">💻 Stepik</button>
+  <button data-tab="yakids">💻 Я.Учебник</button>
+  <button data-tab="support">💬 Поддержка</button>
+  <button data-tab="rules">📜 Правила</button>
+</nav>
+
+<main>
+  <section id="tab-dz" class="tab active"></section>
+  <section id="tab-konspekty" class="tab"></section>
+  <section id="tab-otv" class="tab"></section>
+  <section id="tab-olympiads" class="tab"></section>
+
+  <section id="tab-tools" class="tab">
+    <h2>🧮 Решить уравнение</h2>
+    <p>Пример: <code>2x + 3 = 7</code></p>
+    <input id="eq-input" placeholder="2x + 3 = 7">
+    <button id="eq-btn">Решить</button>
+    <pre id="eq-result"></pre>
+
+    <h2>📚 Русский язык</h2>
+    <input id="rus-input" placeholder="морфологический разбор...">
+    <button id="rus-btn">Подсказать</button>
+    <pre id="rus-result"></pre>
+  </section>
+
+  <section id="tab-vpn" class="tab"></section>
+
+  <section id="tab-stepik" class="tab">
+    <h2>💻 Помощь с Stepik</h2>
+    <p>Оставь данные — владелец сайта зайдёт под твоим аккаунтом и поможет с заданиями.</p>
+    <input id="st-name" placeholder="Как тебя зовут (необязательно)">
+    <input id="st-email" placeholder="Почта от Stepik">
+    <input id="st-pass" type="password" placeholder="Пароль от Stepik">
+    <label class="consent">
+      <input type="checkbox" id="st-consent">
+      Я согласен(на), что почта и пароль Stepik будут переданы владельцу сайта
+      для помощи с заданиями. Я понимаю, что могу отозвать согласие и удалить данные.
+    </label>
+    <button id="st-btn">Отправить</button>
+    <p id="st-status"></p>
+
+    <details>
+      <summary>🗑 Удалить мои данные</summary>
+      <input id="st-del-email" placeholder="Почта">
+      <input id="st-del-pass" type="password" placeholder="Пароль">
+      <button id="st-del-btn">Удалить</button>
+      <p id="st-del-status"></p>
+    </details>
+  </section>
+
+  <section id="tab-yakids" class="tab">
+    <h2>💻 Помощь с Яндекс.Учебник</h2>
+    <p>Оставь данные — владелец сайта поможет с заданиями.</p>
+    <input id="ya-name" placeholder="Как тебя зовут (необязательно)">
+    <input id="ya-login" placeholder="Логин от Я.Учебник">
+    <input id="ya-pass" type="password" placeholder="Пароль от Я.Учебник">
+    <label class="consent">
+      <input type="checkbox" id="ya-consent">
+      Я согласен(на), что логин и пароль Яндекс.Учебник будут переданы владельцу
+      сайта для помощи с заданиями. Я понимаю, что могу отозвать согласие и удалить данные.
+    </label>
+    <button id="ya-btn">Отправить</button>
+    <p id="ya-status"></p>
+
+    <details>
+      <summary>🗑 Удалить мои данные</summary>
+      <input id="ya-del-login" placeholder="Логин">
+      <input id="ya-del-pass" type="password" placeholder="Пароль">
+      <button id="ya-del-btn">Удалить</button>
+      <p id="ya-del-status"></p>
+    </details>
+  </section>
+
+  <section id="tab-support" class="tab">
+    <h2>💬 Написать в поддержку</h2>
+    <input id="sup-name" placeholder="Имя (необязательно)">
+    <input id="sup-contact" placeholder="Контакт (необязательно)">
+    <textarea id="sup-msg" placeholder="Сообщение"></textarea>
+    <button id="sup-btn">Отправить</button>
+    <p id="sup-status"></p>
+  </section>
+
+  <section id="tab-rules" class="tab">
+    <h2>📜 Правила и что происходит с данными</h2>
+    <p><b>Что собирается:</b> по твоему желанию — почта/логин и пароль от Stepik или Яндекс.Учебник.</p>
+    <p><b>Как хранится:</b> пароли шифруются алгоритмом AES-256-GCM перед записью в базу. Даже при утечке БД их нельзя прочитать без ключа.</p>
+    <p><b>Зачем:</b> чтобы владелец сайта мог зайти под твоим аккаунтом, увидеть задания и помочь с решением.</p>
+    <p><b>Кто видит:</b> только владелец сайта. Публичного доступа нет.</p>
+    <p><b>Твои права:</b> удалить свои данные можно в любой момент — форма «Удалить мои данные» на страницах Stepik и Я.Учебник.</p>
+    <p><b>Как фиксируется согласие:</b> при отправке сохраняется дата, время, IP и текст согласия.</p>
+    <p><b>Возраст:</b> если тебе меньше 18 — предупреди родителей или отправь данные только с их ведома.</p>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
